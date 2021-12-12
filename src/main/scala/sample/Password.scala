@@ -1,13 +1,9 @@
 package sample
 
-import com.mohiva.play.silhouette.api.util.PasswordInfo
-import com.mohiva.play.silhouette.password.BCryptSha256PasswordHasher
-
 import java.io.{Externalizable, ObjectInput, ObjectOutput}
 import scala.util.matching.Regex
 
-
-final class Password private (@transient underlying: String) extends Externalizable {
+final class Password private (@transient private var underlying: String) extends Externalizable {
 
   import Password._
 
@@ -20,13 +16,9 @@ final class Password private (@transient underlying: String) extends Externaliza
 
     val returnValue = underlying
     consumed = true
+    underlying = ""
 
     returnValue
-  }
-
-  def hashedPassword: PasswordInfo = {
-    val hasher = new BCryptSha256PasswordHasher
-    hasher.hash(underlying)
   }
 
   override def writeExternal(out: ObjectOutput): Unit = deny

@@ -8,7 +8,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "sensitive-value-sample",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
-      "com.mohiva" %% "play-silhouette-password-bcrypt" % "7.0.0"
+      "org.scalatest" %% "scalatest" % "3.2.10" % Test,
+      "org.scalatestplus" %% "mockito-3-4" % "3.2.10.0" % Test
     )
   )
